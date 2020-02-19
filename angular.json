@@ -1,30 +1,30 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
-  "newProjectRoot": "projects",
+  "version": 1,
+  "newProjectRoot": "",
   "projects": {
     "nx-jest-config-bug": {
       "projectType": "application",
       "schematics": {},
-      "root": "",
-      "sourceRoot": "src",
+      "root": "apps/nx-jest-config-bug",
+      "sourceRoot": "apps/nx-jest-config-bug/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/nx-jest-config-bug",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/apps/nx-jest-config-bug",
+            "index": "apps/nx-jest-config-bug/src/index.html",
+            "main": "apps/nx-jest-config-bug/src/main.ts",
+            "polyfills": "apps/nx-jest-config-bug/src/polyfills.ts",
+            "tsConfig": "apps/nx-jest-config-bug/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/nx-jest-config-bug/src/favicon.ico",
+              "apps/nx-jest-config-bug/src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "apps/nx-jest-config-bug/src/styles.css"
             ],
             "scripts": []
           },
@@ -32,8 +32,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "apps/nx-jest-config-bug/src/environments/environment.ts",
+                  "with": "apps/nx-jest-config-bug/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -79,16 +79,16 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "apps/nx-jest-config-bug/src/test.ts",
+            "polyfills": "apps/nx-jest-config-bug/src/polyfills.ts",
+            "tsConfig": "apps/nx-jest-config-bug/tsconfig.spec.json",
+            "karmaConfig": "apps/nx-jest-config-bug/karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/nx-jest-config-bug/src/favicon.ico",
+              "apps/nx-jest-config-bug/src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "apps/nx-jest-config-bug/src/styles.css"
             ],
             "scripts": []
           }
@@ -97,19 +97,24 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "apps/nx-jest-config-bug/tsconfig.app.json",
+              "apps/nx-jest-config-bug/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
           }
-        },
+        }
+      }
+    },
+    "nx-jest-config-bug-e2e": {
+      "projectType": "application",
+      "root": "apps/nx-jest-config-bug-e2e",
+      "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "protractorConfig": "apps/nx-jest-config-bug-e2e/protractor.conf.js",
             "devServerTarget": "nx-jest-config-bug:serve"
           },
           "configurations": {
@@ -117,8 +122,21 @@
               "devServerTarget": "nx-jest-config-bug:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/nx-jest-config-bug-e2e/tsconfig.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
         }
       }
-    }},
-  "defaultProject": "nx-jest-config-bug"
+    }
+  },
+  "defaultProject": "nx-jest-config-bug",
+  "cli": {
+    "analytics": false
+  }
 }
