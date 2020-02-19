@@ -13,6 +13,9 @@
     },
     "nx-jest-config-bug-e2e": {
       "tags": []
+    },
+    "website": {
+      "tags": []
     }
   }
 }

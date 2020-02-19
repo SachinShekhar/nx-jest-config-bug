@@ -23,9 +23,7 @@
               "apps/nx-jest-config-bug/src/favicon.ico",
               "apps/nx-jest-config-bug/src/assets"
             ],
-            "styles": [
-              "apps/nx-jest-config-bug/src/styles.css"
-            ],
+            "styles": ["apps/nx-jest-config-bug/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -87,9 +85,7 @@
               "apps/nx-jest-config-bug/src/favicon.ico",
               "apps/nx-jest-config-bug/src/assets"
             ],
-            "styles": [
-              "apps/nx-jest-config-bug/src/styles.css"
-            ],
+            "styles": ["apps/nx-jest-config-bug/src/styles.css"],
             "scripts": []
           }
         },
@@ -100,9 +96,7 @@
               "apps/nx-jest-config-bug/tsconfig.app.json",
               "apps/nx-jest-config-bug/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -127,12 +121,38 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/nx-jest-config-bug-e2e/tsconfig.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
+    },
+    "website": {
+      "projectType": "library",
+      "root": "libs/website",
+      "sourceRoot": "libs/website/src",
+      "prefix": "nx-jest-config-bug",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/website/tsconfig.lib.json",
+              "libs/website/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/website/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/website/jest.config.js",
+            "tsConfig": "libs/website/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/website/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "defaultProject": "nx-jest-config-bug",
